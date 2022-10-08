@@ -1,53 +1,75 @@
 local DiscordLib = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/discord%20lib.txt")()
 
-local win = DiscordLib:Window("DirectServer")
+local win = DiscordLib:Window("discord library")
 
-local serv = win:Server("DirectServer", "")
+local serv = win:Server("Preview", "")
 
-local Farm = serv:Channel("Player")
-local plr  =  game.Players.LocalPlayer
+local btns = serv:Channel("Buttons")
 
-Farm:Button("AutoFarm", function()
-    local plr  =  game.Players.LocalPlayer
-        while true do
-            plr.Character.HumanoidRootPart.Position = Vector3.new(-4064.5, 15, 0)
-            wait()
-            plr.Character.HumanoidRootPart.Position = Vector3.new(-10064.5, 15, 0)
-            wait()
-            plr.Character.HumanoidRootPart.Position = Vector3.new(-22064.5, 15, 0)
-            wait()
-            plr.Character.HumanoidRootPart.Position = Vector3.new(-40064.5, 15, 0)
-            wait()
-            plr.Character.HumanoidRootPart.Position = Vector3.new(-64064.5, 15, 0)
-            wait()
-            plr.Character.HumanoidRootPart.Position = Vector3.new(-94064.5, 15, 0)
-            wait()
-            plr.Character.HumanoidRootPart.Position = Vector3.new(-130064, 15, 0)
-            wait()
-            plr.Character.HumanoidRootPart.Position = Vector3.new(-172064, 15, 0)
-            wait()
-            plr.Character.HumanoidRootPart.Position = Vector3.new(-220064, 15, 0)
-            wait()
-            plr.Character.HumanoidRootPart.Position = Vector3.new(-274064, 15, 0)
-            wait()
-            plr.Character.HumanoidRootPart.Position = Vector3.new(-346064, 40, 0)
-            wait()
-            plr.Character.HumanoidRootPart.Position = Vector3.new(-442064, 40, 0)
-            wait()
-            plr.Character.HumanoidRootPart.Position = Vector3.new(-275064, 90, 19000)
-            wait()
-            plr.Character.HumanoidRootPart.Position = Vector3.new(-113064, 90, 19000)
-            wait()
-            plr.Character.HumanoidRootPart.Position = Vector3.new(-442064, 90, 19000)
-            wait()
-            plr.Character.HumanoidRootPart.Position = Vector3.new(-442064, 90, 35000)
-            wait()
-    end
+btns:Button("Kill all", function()
+DiscordLib:Notification("Notification", "Killed everyone!", "Okay!")
 end)
 
+btns:Seperator()
+
+btns:Button("Get max level", function()
+DiscordLib:Notification("Notification", "Max level!", "Okay!")
+end)
+
+local tgls = serv:Channel("Toggles")
+
+tgls:Toggle("Auto-Farm",false, function(bool)
+print(bool)
+end)
+
+local sldrs = serv:Channel("Sliders")
+
+local sldr = sldrs:Slider("Slide me!", 0, 1000, 400, function(t)
+print(t)
+end)
+
+sldrs:Button("Change to 50", function()
+sldr:Change(50)
+end)
+
+local drops = serv:Channel("Dropdowns")
 
 
+local drop = drops:Dropdown("Pick me!",{"Option 1","Option 2","Option 3","Option 4","Option 5"}, function(bool)
+print(bool)
+end)
+
+drops:Button("Clear", function()
+drop:Clear()
+end)
+
+drops:Button("Add option", function()
+drop:Add("Option")
+end)
+
+local clrs = serv:Channel("Colorpickers")
+
+clrs:Colorpicker("ESP Color", Color3.fromRGB(255,1,1), function(t)
+print(t)
+end)
+
+local textbs = serv:Channel("Textboxes")
+
+textbs:Textbox("Gun power", "Type here!", true, function(t)
+print(t)
+end)
+
+local lbls = serv:Channel("Labels")
+
+lbls:Label("This is just a label.")
+
+local bnds = serv:Channel("Binds")
+
+bnds:Bind("Kill bind", Enum.KeyCode.RightShift, function()
+print("Killed everyone!")
+end)
+
+serv:Channel("by dawid#7205")
 
 
-
-
+win:Server("Main", "http://www.roblox.com/asset/?id=6031075938")
