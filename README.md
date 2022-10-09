@@ -4,72 +4,94 @@ local win = DiscordLib:Window("discord library")
 
 local serv = win:Server("Preview", "")
 
-local btns = serv:Channel("Buttons")
+local Zero = serv:Channel("Weapons")
 
-btns:Button("Kill all", function()
-DiscordLib:Notification("Notification", "Killed everyone!", "Okay!")
+local One = serv:Channel("Player")
+
+local Two = serv:Channel("Admin")
+
+
+One:Button("InmateTeam", function()
+local args = {
+    [1] = "Bright orange"
+}
+
+workspace.Remote.TeamEvent:FireServer(unpack(args))
+
+local args = {
+    [1] = "Error0242"
+}
+
+workspace.Remote.loadchar:InvokeServer(unpack(args))
 end)
 
-btns:Seperator()
+One:Button("Guard Team", function()
+local args = {
+    [1] = "Bright blue"
+}
 
-btns:Button("Get max level", function()
-DiscordLib:Notification("Notification", "Max level!", "Okay!")
+workspace.Remote.TeamEvent:FireServer(unpack(args))
+local args = {
+    [1] = "Error0242"
+}
+
+workspace.Remote.loadchar:InvokeServer(unpack(args))
 end)
 
-local tgls = serv:Channel("Toggles")
 
-tgls:Toggle("Auto-Farm",false, function(bool)
-print(bool)
+One:Textbox("WalkSpeed", "Hare!", true, function(t)
+    local Player = game.Players.LocalPlayer
+    Player.Character.Humanoid.WalkSpeed = t
 end)
 
-local sldrs = serv:Channel("Sliders")
-
-local sldr = sldrs:Slider("Slide me!", 0, 1000, 400, function(t)
-print(t)
+One:Textbox("JumpPower", "Hare!", true, function(t)
+    local Player = game.Players.LocalPlayer
+    Player.Character.Humanoid.JumpPower  = t
 end)
 
-sldrs:Button("Change to 50", function()
-sldr:Change(50)
+
+
+
+
+
+
+Two:Button("Admin", function()
+    loadstring(game:HttpGet"https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source")()
 end)
 
-local drops = serv:Channel("Dropdowns")
+Zero:Button("AK-47", function()
+    local args = {
+    [1] = workspace.Prison_ITEMS.giver["AK-47"].ITEMPICKUP
+}
 
-
-local drop = drops:Dropdown("Pick me!",{"Option 1","Option 2","Option 3","Option 4","Option 5"}, function(bool)
-print(bool)
+workspace.Remote.ItemHandler:InvokeServer(unpack(args))
 end)
 
-drops:Button("Clear", function()
-drop:Clear()
+Zero:Button("Remington 870", function()
+    local args = {
+    [1] = workspace.Prison_ITEMS.giver["Remington 870"].ITEMPICKUP
+}
+
+workspace.Remote.ItemHandler:InvokeServer(unpack(args))
 end)
 
-drops:Button("Add option", function()
-drop:Add("Option")
+Zero:Button("M9", function()
+    local args = {
+    [1] = workspace.Prison_ITEMS.giver.M9.ITEMPICKUP
+}
+
+workspace.Remote.ItemHandler:InvokeServer(unpack(args))
 end)
 
-local clrs = serv:Channel("Colorpickers")
-
-clrs:Colorpicker("ESP Color", Color3.fromRGB(255,1,1), function(t)
-print(t)
-end)
-
-local textbs = serv:Channel("Textboxes")
-
-textbs:Textbox("Gun power", "Type here!", true, function(t)
-print(t)
-end)
-
-local lbls = serv:Channel("Labels")
-
-lbls:Label("This is just a label.")
-
-local bnds = serv:Channel("Binds")
-
-bnds:Bind("Kill bind", Enum.KeyCode.RightShift, function()
-print("Killed everyone!")
-end)
-
-serv:Channel("by dawid#7205")
 
 
-win:Server("Main", "http://www.roblox.com/asset/?id=6031075938")
+
+
+
+
+
+
+
+
+
+
